@@ -1,0 +1,9 @@
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+header { background:#0b5; padding:10px; }
+header nav a { color:#000; text-decoration:none; margin-right:8px; }
+main { padding:20px; max-width:900px; margin:0 auto; }
+form label { display:block; margin-bottom:10px; }
+input[type="text"], input[type="email"], input[type="password"] { width:100%; padding:8px; box-sizing:border-box; }
+button { padding:8px 12px; }
+.alert-error { background:#ffdede; color:#900; padding:10px; margin-bottom:12px; border-radius:4px; }
+.alert-success { background:#e6ffea; color:#060; padding:10px; margin-bottom:12px; border-radius:4px; }
