@@ -47,6 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 <?php endif; ?>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
 <form id="loginForm" method="post" action="">
   <label>Email
     <input type="email" name="email" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
@@ -57,4 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <button type="submit">Login</button>
 </form>
 
+<<<<<<< HEAD
+=======
+<div style="text-align:center; margin-top:18px;">
+  <a href="/volunteer_portal/pages/admin_login.php" class="admin-login-btn">Login as Admin</a>
+</div>
+
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

@@ -17,16 +17,26 @@ $success = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
     $description = trim($_POST['description'] ?? '');
+<<<<<<< HEAD
     $event_date = $_POST['event_date'] ?? '';
     $event_id = $_POST['event_id'] ?? '';
 
     if ($title === '' || $event_date === '') {
         $errors[] = "Title and date are required.";
+=======
+    $date = $_POST['date'] ?? '';
+    $vacancy = $_POST['vacancy'] ?? '';
+    $event_id = $_POST['event_id'] ?? '';
+
+    if ($title === '' || $date === '' || $vacancy === '') {
+        $errors[] = "Title, date, and vacancy are required.";
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
     }
 
     if (empty($errors)) {
         if ($event_id) {
             // Update existing
+<<<<<<< HEAD
             $stmt = $pdo->prepare("UPDATE events SET title=?, description=?, event_date=? WHERE id=?");
             $stmt->execute([$title, $description, $event_date, $event_id]);
             $success = "Event updated successfully!";
@@ -34,6 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Create new
             $stmt = $pdo->prepare("INSERT INTO events (title, description, event_date) VALUES (?, ?, ?)");
             $stmt->execute([$title, $description, $event_date]);
+=======
+            $stmt = $pdo->prepare("UPDATE events SET title=?, description=?, date=?, vacancy=? WHERE id=?");
+            $stmt->execute([$title, $description, $date, $vacancy, $event_id]);
+            $success = "Event updated successfully!";
+        } else {
+            // Create new
+            $stmt = $pdo->prepare("INSERT INTO events (title, description, date, vacancy) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$title, $description, $date, $vacancy]);
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
             $success = "Event created successfully!";
         }
     }
@@ -47,7 +66,11 @@ if (isset($_GET['delete_id'])) {
 }
 
 // Fetch events
+<<<<<<< HEAD
 $stmt = $pdo->query("SELECT * FROM events ORDER BY event_date ASC");
+=======
+$stmt = $pdo->query("SELECT * FROM events ORDER BY date ASC");
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // If editing
@@ -81,7 +104,14 @@ if (isset($_GET['edit_id'])) {
         <textarea name="description"><?= htmlspecialchars($editData['description'] ?? '') ?></textarea>
     </label>
     <label>Event Date
+<<<<<<< HEAD
         <input type="date" name="event_date" required value="<?= htmlspecialchars($editData['event_date'] ?? '') ?>">
+=======
+        <input type="date" name="date" required value="<?= htmlspecialchars($editData['date'] ?? '') ?>">
+    </label>
+    <label>Vacancy
+        <input type="number" name="vacancy" min="0" required value="<?= htmlspecialchars($editData['vacancy'] ?? '') ?>">
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
     </label>
     <button type="submit"><?= $editData ? 'Update Event' : 'Create Event' ?></button>
 </form>
@@ -94,13 +124,22 @@ if (isset($_GET['edit_id'])) {
         <th>Title</th>
         <th>Description</th>
         <th>Date</th>
+<<<<<<< HEAD
+=======
+        <th>Vacancy</th>
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
         <th>Actions</th>
     </tr>
     <?php foreach ($events as $ev): ?>
     <tr>
         <td><?= htmlspecialchars($ev['title']) ?></td>
         <td><?= htmlspecialchars($ev['description']) ?></td>
+<<<<<<< HEAD
         <td><?= htmlspecialchars($ev['event_date']) ?></td>
+=======
+        <td><?= htmlspecialchars($ev['date']) ?></td>
+        <td><?= htmlspecialchars($ev['vacancy'] ?? 'N/A') ?></td>
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
         <td>
             <a href="?edit_id=<?= $ev['id'] ?>">Edit</a> |
             <a href="?delete_id=<?= $ev['id'] ?>" onclick="return confirm('Delete this event?')">Delete</a>

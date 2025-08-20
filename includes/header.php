@@ -2,6 +2,12 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+<<<<<<< HEAD
+=======
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+>>>>>>> 8a3025390cec50e494310adbfb983a08a0684839
 ?>
 <!doctype html>
 <html lang="en">
